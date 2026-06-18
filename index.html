@@ -98,13 +98,23 @@
             border: 1px solid #e2e8f0;
         }
 
-        .status-tag {
-            display: inline-block;
-            padding: 7px 20px;
-            border-radius: 30px;
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--teal);
+            color: #0f172a;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 700;
-            font-size: 14px;
             margin-top: 12px;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #67e8f9;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -152,21 +162,22 @@
 
         var developments = {
             construction: [
-                { name: "Rockwall Industrial", city: "Rockwall, TX", lat: 32.90745, lng: -96.42921, size: "285,000 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/rockwall-industrial.png", address: "", acres: "", lots: "" },
-                { name: "South Prosperity", city: "Krugerville, TX", lat: 33.26495, lng: -96.98484, size: "64,950 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 16, 2026, 07_42_34 AM.png", address: "Block A, Prosperity Way, Krugerville, TX 76227", acres: "21.41 AC", lots: "7 IOS Lots" },
-                { name: "Waxahachie IOS", city: "Waxahachie, TX", lat: 32.36899, lng: -96.87912, size: "23,200 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_36_56 PM.png", address: "", acres: "", lots: "" },
-                { name: "San Marcos IOS Park", city: "San Marcos, TX", lat: 29.80152, lng: -97.99933, size: "107,600 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/san-marcos-ios-park.png", address: "6226 Old Bastrop Hwy, San Marcos, TX 78666", acres: "", lots: "8 IOS Lots" },
-                { name: "Heritage 287", city: "Mansfield, TX", lat: 32.56719, lng: -97.11799, size: "258,444 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/heritage-287.png", address: "", acres: "", lots: "" },
-                { name: "Mansfield Lakeview", city: "Mansfield, TX", lat: 32.54287, lng: -97.06734, size: "22,800 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/mansfield-lakeview.png", address: "1266 Lakeview Drive, Mansfield, TX 76065", acres: "13.96 AC", lots: "" },
-                { name: "Melissa Industrial - Master Halco", city: "Melissa, TX", lat: 33.29634, lng: -96.53752, size: "", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_44_26 PM.png", address: "3550 Industrial Drive, Melissa, TX 75454", acres: "3.34 AC", lots: "1 IOS Lots" }
+                { name: "Rockwall Industrial", city: "Rockwall, TX", lat: 32.90745, lng: -96.42921, size: "285,000 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/rockwall-industrial.png", address: "", acres: "", lots: "", brochure: "" },
+                { name: "South Prosperity", city: "Krugerville, TX", lat: 33.26495, lng: -96.98484, size: "64,950 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 16, 2026, 07_42_34 AM.png", address: "Block A, Prosperity Way, Krugerville, TX 76227", acres: "21.41 AC", lots: "7 IOS Lots", brochure: "" },
+                { name: "Waxahachie IOS", city: "Waxahachie, TX", lat: 32.36899, lng: -96.87912, size: "23,200 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_36_56 PM.png", address: "", acres: "", lots: "", brochure: "" },
+                { name: "San Marcos IOS Park", city: "San Marcos, TX", lat: 29.80152, lng: -97.99933, size: "107,600 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/san-marcos-ios-park.png", address: "6226 Old Bastrop Hwy, San Marcos, TX 78666", acres: "", lots: "8 IOS Lots", brochure: "" },
+                { name: "Heritage 287", city: "Mansfield, TX", lat: 32.56719, lng: -97.11799, size: "258,444 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/heritage-287.png", address: "", acres: "", lots: "", brochure: "" },
+                { name: "Mansfield Lakeview", city: "Mansfield, TX", lat: 32.54287, lng: -97.06734, size: "22,800 SF", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/mansfield-lakeview.png", address: "1266 Lakeview Drive, Mansfield, TX 76065", acres: "13.96 AC", lots: "", brochure: "" },
+                { name: "Melissa Industrial - Master Halco", city: "Melissa, TX", lat: 33.29634, lng: -96.53752, size: "", status: "Under Construction", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_44_26 PM.png", address: "3550 Industrial Drive, Melissa, TX 75454", acres: "3.34 AC", lots: "1 IOS Lots", brochure: "" }
             ],
             pipeline: [
-                { name: "Sherman IOS", city: "Sherman, TX", lat: 33.68906, lng: -96.65162, size: "", status: "Available", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_41_30 PM.png", address: "4800 FM 1417, Sherman, Texas 75092", acres: "39.09 AC", lots: "7 IOS Lots" },
-                { name: "Waxahachie FM66L", city: "Waxahachie, TX", lat: 32.36899, lng: -96.87912, size: "23,200 SF", status: "Delivering Q1 2027", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_36_56 PM.png", address: "FM66L, Waxahachie, TX 75168", acres: "", lots: "6 IOS Lots" },
-                { name: "Alvarado 22.9", city: "Alvarado, TX", lat: 32.41677, lng: -97.17536, size: "", status: "Available", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/alvarado-22.9.png", address: "8749 E US-67, Alvarado, TX 76009", acres: "12.00 AC", lots: "2 IOS Lots" },
-                { name: "Royse City Phase II", city: "Royse City, TX", lat: 32.975, lng: -96.333, company: "RCP Fund III", status: "Active Pipeline", image: "", address: "", acres: "", lots: "" },
-                { name: "I-35 & I-20 South FW", city: "Fort Worth, TX", lat: 32.75, lng: -97.31, size: "494,580 SF", company: "BAIR Holdings", status: "Active Pipeline", image: "", address: "", acres: "", lots: "" },
-                { name: "North Fort Worth", city: "North Fort Worth, TX", lat: 32.99283, lng: -97.28642, size: "22,800 SF", status: "Active Pipeline", image: "", address: "", acres: "5.33 AC", lots: "" }
+                { name: "Sherman IOS", city: "Sherman, TX", lat: 33.68906, lng: -96.65162, size: "", status: "Available", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_41_30 PM.png", address: "4800 FM 1417, Sherman, Texas 75092", acres: "39.09 AC", lots: "7 IOS Lots", brochure: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/Sherman- National IOS .pdf" },
+                { name: "Waxahachie FM66L", city: "Waxahachie, TX", lat: 32.36899, lng: -96.87912, size: "23,200 SF", status: "Delivering Q1 2027", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/ChatGPT Image Jun 15, 2026, 01_36_56 PM.png", address: "FM66L, Waxahachie, TX 75168", acres: "", lots: "6 IOS Lots", brochure: "" },
+                { name: "Alvarado 22.9", city: "Alvarado, TX", lat: 32.41677, lng: -97.17536, size: "", status: "Available", image: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/alvarado-22.9.png", address: "8749 E US-67, Alvarado, TX 76009", acres: "12.00 AC", lots: "2 IOS Lots", 
+                  brochure: "https://raw.githubusercontent.com/jakepistone/rcp-development-map/main/Alvarado - National IOS.pdf" },
+                { name: "Royse City Phase II", city: "Royse City, TX", lat: 32.975, lng: -96.333, company: "RCP Fund III", status: "Active Pipeline", image: "", address: "", acres: "", lots: "", brochure: "" },
+                { name: "I-35 & I-20 South FW", city: "Fort Worth, TX", lat: 32.75, lng: -97.31, size: "494,580 SF", company: "BAIR Holdings", status: "Active Pipeline", image: "", address: "", acres: "", lots: "", brochure: "" },
+                { name: "North Fort Worth", city: "North Fort Worth, TX", lat: 32.99283, lng: -97.28642, size: "22,800 SF", status: "Active Pipeline", image: "", address: "", acres: "5.33 AC", lots: "", brochure: "" }
             ]
         };
 
@@ -190,6 +201,9 @@
                             ${dev.acres ? `<div><strong>Acres:</strong> ${dev.acres}</div>` : ''}
                             ${dev.size ? `<div><strong>Building:</strong> ${dev.size}</div>` : ''}
                             ${dev.lots ? `<div><strong>Lots:</strong> ${dev.lots}</div>` : ''}
+                            
+                            ${dev.brochure ? `<a href="${dev.brochure}" download class="download-btn"><i class="fas fa-download"></i> Brochure Download</a>` : ''}
+                            
                             <div class="status-tag" style="background: ${dev.status === 'Available' ? '#d1fae5' : '#fef3c7'}; color: ${dev.status === 'Available' ? '#0f766e' : '#92400e'};">
                                 ${dev.status}
                             </div>
